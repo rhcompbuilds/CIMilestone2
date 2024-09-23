@@ -1,3 +1,17 @@
+#warning {
+    display: none;
+    color: red;
+}
+#game {
+    display: none;
+}
+
+#leaderboard {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28;
+    color: lightblue;
+}
+
 body {
     text-align: center;
     background: rgb(0,17,36);
@@ -47,4 +61,17 @@ p {
     color: white;
     border: none;
     padding: 5px 10px;
+}
+
+table {
+    display: inline;
+}
+
+#leaderboardSection {
+    display: block; /* Display leaderboard initially */
+    margin: 20px 0;
+}
+
+#leaderboardSection.hidden {
+    display: none; /* Hide when the game starts */
 }

@@ -41,14 +41,111 @@ function createBricks() {
         }
       }
     }
+
+    // Function to display the leaderboard
+function showLeaderboard() {
+    const leaderboard = document.getElementById("leaderboard");
+    const leaderboardData = getLeaderboardData();
+    leaderboard.innerHTML = ''; // Clear existing entries
+    leaderboardData.forEach((entry, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${index + 1}. ${entry.name} - ${entry.score}`;
+        leaderboard.appendChild(li);
+    });
+
+    // Show leaderboard only if there are scores
+    if (leaderboardData.length > 0) {
+        document.getElementById("leaderboardSection").classList.remove("hidden");
+    } else {
+        document.getElementById("leaderboardSection").classList.add("hidden");
+    }
+}
+
+    // Get leaderboard data from localStorage
+    function getLeaderboardData() {
+        const leaderboard = localStorage.getItem('leaderboard');
+        return leaderboard ? JSON.parse(leaderboard) : [];
+    }
+
+    function validate() {
+        const name = document.getElementById("name").value;
+        const warning = document.getElementById('warning');
+ 
+        // Regular expression to match only letters and numbers
+        const regex = /^[A-Za-z0-9]*$/;
+ 
+        if (!regex.test(name)) {
+        warning.style.display = 'block';  // Show the warning
+        return false;
+        } else {
+        warning.style.display = 'none';   // Hide the warning
+        return true;
+        }
+    }
+
+            // Start the game when the player name is valid
+            function startGame() {
+                const nameValid = validate();
+                const playerName = document.getElementById("name").value;
+
+                if (nameValid && playerName.length > 0) {
+                    showDialog("Welcome, " + playerName + "! Let's start the game.");
+
+                    document.getElementById("playerDetails").style.display = "none"; // Hide name input
+                    document.getElementById("game").style.display = "block"; // Show the game
+
+                    // Initialize game and start drawing
+                    createBricks();
+                    draw();
+                } else {
+                    showDialog("Please enter a valid name to start the game.");
+                }
+            }
+
+            function updateLeaderboard(playerName, playerScore) {
+                let leaderboardData = getLeaderboardData();
+            
+                // Add the new player's score
+                leaderboardData.push({ name: playerName, score: playerScore });
+            
+                // Sort and keep only top 10 scores
+                leaderboardData.sort((a, b) => b.score - a.score);
+                leaderboardData = leaderboardData.slice(0, 10);
+            
+                // Save the updated leaderboard back to localStorage
+                localStorage.setItem('leaderboard', JSON.stringify(leaderboardData));
+            
+                // Show the leaderboard
+                showLeaderboard();
+            }
+
+           // Update the leaderboard on game over
+function gameOver() {
+    const playerName = document.getElementById("name").value;
+    const playerScore = score;
+
+    showDialog("Game Over! Your score: " + playerScore);
+
+    // Update the leaderboard
+    updateLeaderboard(playerName, playerScore);
+
+    // Show the leaderboard again
+    showLeaderboard();
+
+    // Reload the game or reset game logic
+    document.location.reload(); // Optionally reload the page to start over
+}
+window.onload = function() {
+    showLeaderboard(); // Show leaderboard on page load
+};       
 createBricks();
 
 let rightPressed = false;
 let leftPressed = false;
 let score = 0;
 let lives = 5;
-let level = 1;
-let maxLevel = 10;
+let level = 3;
+let maxLevel = 5;
 
 let paused = false; // Game paused state
 let animationFrameId; // To store the requestAnimationFrame id
@@ -110,40 +207,48 @@ function showDialog(message, callback) {
 }
 
 function collisionDetection() {
+    let brokenBricks = 0; // Initialize broken bricks count
+    let totalBricks = 0; // To keep track of total bricks
+
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             let b = bricks[c][r];
             if (b.status === 1) {
+                totalBricks++; // Count total bricks
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.hits--;
                     if (b.hits === 0) {
-                        b.status = 0;
+                        b.status = 0; // Mark the brick as broken
                         score++;
-                        if (score === brickRowCount * brickColumnCount) {
-                            if (level === maxLevel) {
-                                showDialog("YOU WIN, CONGRATULATIONS!", function() {
-                                    document.location.reload(); // Reload the game
-                                });
-                            } else {
-                                level++;
-                                brickRowCount++;
-                                dx += 1; // Increase ball speed
-                                dy = -dy;
-                                score = 0;
-                                createBricks();
-                                x = canvas.width / 2;
-                                y = canvas.height - 30;
-                                paddleX = (canvas.width - paddleWidth) / 2;
-                                showDialog("Level " + level);
-                            }
-                        }
+                        brokenBricks++; // Increment the broken bricks count
                     }
                 }
             }
         }
     }
+
+    // Check if all bricks are broken
+    if (brokenBricks > 0 && (brokenBricks + (brickRowCount * brickColumnCount - totalBricks)) === brickRowCount * brickColumnCount) {
+        if (level === maxLevel) {
+            showDialog("YOU WIN, CONGRATULATIONS!", function() {
+                document.location.reload(); // Reload the game
+            });
+        } else {
+            level++;
+            brickRowCount++; // Increase the number of rows for the next level
+            dx += 1; // Increase ball speed
+            dy = -dy; // Reverse the direction of the ball
+            // Optionally keep score or reset it
+            createBricks(); // Create new bricks for the new level
+            x = canvas.width / 2; // Reset ball position
+            y = canvas.height - 30; // Reset ball position
+            paddleX = (canvas.width - paddleWidth) / 2; // Reset paddle position
+            showDialog("Level " + level);
+        }
+    }
 }
+
 
 
 function drawBall() {
@@ -236,9 +341,7 @@ function draw() {
             } else {
                 lives--;
                 if (!lives) {
-                    showDialog("GAME OVER", function() {
-                        document.location.reload(); // Reload the game
-                    });
+                    gameOver();
                 } else {
                     x = canvas.width / 2;
                     y = canvas.height - 30;
@@ -249,7 +352,7 @@ function draw() {
             }
         }
 
-         // Paddle movement logic
+        // Paddle movement logic
          if (rightPressed && paddleX < canvas.width - paddleWidth) {
             paddleX += 7;
         } else if (leftPressed && paddleX > 0) {
@@ -264,6 +367,3 @@ function draw() {
         animationFrameId = requestAnimationFrame(draw);
     }
 }
-
-// Start the game
-draw();
