@@ -25,12 +25,11 @@ const brickOffsetLeft = canvas.width * 0.05;
 let bricks = [];
 function createBricks() {
     bricks = [];
-    for (c = 0; c < brickColumnCount; c++) {
+    for (c = 0; c < brickColumnCount; c+= 1) {
         bricks[c] = [];
-        for (r = 0; r < brickRowCount; r++) {
+        for (r = 0; r < brickRowCount; r+= 1) {
           bricks[c][r] = { x: 0, y: 0, status: 1 };
-    
-          // Determine hit count based on row index and randomize within the range
+// Determine hit count based on row index and randomize within the range
           if (r < brickRowCount / 3) {
             bricks[c][r].hits = Math.floor(Math.random() * 2) + 2;
           } else if (r < 2 * brickRowCount / 3) {
@@ -46,54 +45,49 @@ function createBricks() {
 function showLeaderboard() {
     const leaderboard = document.getElementById("leaderboard");
     const leaderboardData = getLeaderboardData();
-    leaderboard.innerHTML = ''; // Clear existing entries
-    leaderboardData.forEach((entry, index) => {
+    leaderboard.innerHTML = " "; // Clear existing entries
+    leaderboardData.forEach(function (entry, index) {
         const li = document.createElement("li");
         li.textContent = `${index + 1}. ${entry.name} - ${entry.score}`;
         leaderboard.appendChild(li);
     });
-
     // Show leaderboard only if there are scores
     if (leaderboardData.length > 0) {
-        document.getElementById("leaderboardSection").classList.remove("hidden");
+        document.getElementById("leaderboardSection")
+        .classList.remove("hidden");
     } else {
-        document.getElementById("leaderboardSection").classList.add("hidden");
+        document.getElementById("leaderboardSection")
+        .classList.add("hidden");
     }
 }
-
     // Get leaderboard data from localStorage
     function getLeaderboardData() {
-        const leaderboard = localStorage.getItem('leaderboard');
+        const leaderboard = localStorage.getItem("leaderboard");
         return leaderboard ? JSON.parse(leaderboard) : [];
     }
-
     function validate() {
         const name = document.getElementById("name").value;
-        const warning = document.getElementById('warning');
- 
+        const warning = document.getElementById("warning");
         // Regular expression to match only letters and numbers
         const regex = /^[A-Za-z0-9]*$/;
- 
         if (!regex.test(name)) {
-        warning.style.display = 'block';  // Show the warning
+        warning.style.display = "block";  // Show the warning
         return false;
         } else {
-        warning.style.display = 'none';   // Hide the warning
+        warning.style.display = "none";   // Hide the warning
         return true;
         }
     }
-
-            // Start the game when the player name is valid
+        // Start the game when the player name is valid
             function startGame() {
                 const nameValid = validate();
                 const playerName = document.getElementById("name").value;
-
                 if (nameValid && playerName.length > 0) {
-                    showDialog("Welcome, " + playerName + "! Let's start the game.");
-
-                    document.getElementById("playerDetails").style.display = "none"; // Hide name input
-                    document.getElementById("game").style.display = "block"; // Show the game
-
+            showDialog("Welcome, " + playerName + "! Let's start the game.");
+                    // Hide name input
+            document.getElementById("playerDetails").style.display = "none";
+                    // Show the game
+            document.getElementById("game").style.display = "block";
                     // Initialize game and start drawing
                     createBricks();
                     draw();
@@ -101,58 +95,44 @@ function showLeaderboard() {
                     showDialog("Please enter a valid name to start the game.");
                 }
             }
-
             function updateLeaderboard(playerName, playerScore) {
                 let leaderboardData = getLeaderboardData();
-            
                 // Add the new player's score
                 leaderboardData.push({ name: playerName, score: playerScore });
-            
                 // Sort and keep only top 10 scores
                 leaderboardData.sort((a, b) => b.score - a.score);
                 leaderboardData = leaderboardData.slice(0, 10);
-            
                 // Save the updated leaderboard back to localStorage
-                localStorage.setItem('leaderboard', JSON.stringify(leaderboardData));
-            
+        localStorage.setItem("leaderboard", JSON.stringify(leaderboardData));
                 // Show the leaderboard
                 showLeaderboard();
             }
-
            // Update the leaderboard on game over
 function gameOver() {
     const playerName = document.getElementById("name").value;
     const playerScore = score;
-
     showDialog("Game Over! Your score: " + playerScore);
-
     // Update the leaderboard
     updateLeaderboard(playerName, playerScore);
-
     // Show the leaderboard again
     showLeaderboard();
-
     // Reload the game or reset game logic
     document.location.reload(); // Optionally reload the page to start over
 }
 window.onload = function() {
     showLeaderboard(); // Show leaderboard on page load
-};       
+};
 createBricks();
-
 let rightPressed = false;
 let leftPressed = false;
 let score = 0;
 let lives = 3;
 let level = 1;
 let maxLevel = 5;
-
 let paused = false; // Game paused state
 let animationFrameId; // To store the requestAnimationFrame id
-
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-
 function keyDownHandler(e) {
     if (e.key === "Right" || e.key === "ArrowRight") {
         rightPressed = true;
@@ -162,7 +142,6 @@ function keyDownHandler(e) {
         togglePause(); // Toggle pause when 'P' is pressed
     }
 }
-
 function keyUpHandler(e) {
     if (e.key === "Right" || e.key === "ArrowRight") {
         rightPressed = false;
@@ -170,7 +149,6 @@ function keyUpHandler(e) {
         leftPressed = false;
     }
 }
-
 function togglePause() {
     paused = !paused;
     if (!paused) {
@@ -179,12 +157,10 @@ function togglePause() {
         cancelAnimationFrame(animationFrameId); // Pause the game
     }
 }
-
 // Function to show the jQuery dialog and pause the game
 function showDialog(message, callback) {
     // Set paused to true to stop the game loop
     paused = true;
-    
     // Show the dialog
     $("#dialogMessage").text(message);
     $("#dialog").dialog({
@@ -192,30 +168,25 @@ function showDialog(message, callback) {
         buttons: {
             Ok: function() {
                 $(this).dialog("close");
-                
                 // Resume the game after the dialog is closed
                 paused = false;
-                
                 // Call the callback if provided
-                if (callback) callback();
-                
+                if (callback) {callback();}
                 // Resume the game loop
                 draw();
             }
         }
     });
 }
-
 function collisionDetection() {
     let brokenBricks = 0; // Initialize broken bricks count
     let totalBricks = 0; // To keep track of total bricks
-
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             let b = bricks[c][r];
             if (b.status === 1) {
                 totalBricks++; // Count total bricks
-                if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.hits--;
                     if (b.hits === 0) {
@@ -227,9 +198,8 @@ function collisionDetection() {
             }
         }
     }
-
     // Check if all bricks are broken
-    if (brokenBricks > 0 && (brokenBricks + (brickRowCount * brickColumnCount - totalBricks)) === brickRowCount * brickColumnCount) {
+if (brokenBricks > 0 && (brokenBricks + (brickRowCount * brickColumnCount - totalBricks)) === brickRowCount * brickColumnCount) {
         if (level === maxLevel) {
             showDialog("YOU WIN, CONGRATULATIONS!", function() {
                 document.location.reload(); // Reload the game
@@ -248,9 +218,6 @@ function collisionDetection() {
         }
     }
 }
-
-
-
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
@@ -258,19 +225,20 @@ function drawBall() {
     ctx.fill();
     ctx.closePath();
 }
-
 function drawPaddle() {
     ctx.beginPath();
     ctx.fillStyle = "lightgrey"; // Change color
     ctx.fill();
   ctx.moveTo(paddleX + paddleWidth / 2, canvas.height - paddleHeight);
-  ctx.arcTo(paddleX + paddleWidth, canvas.height - paddleHeight, paddleX + paddleWidth, canvas.height, 10); // Adjust the radius as needed
+  ctx.arcTo(paddleX + paddleWidth, canvas.height - paddleHeight,
+    paddleX + paddleWidth, canvas.height, 10); // Adjust the radius as needed
   ctx.lineTo(paddleX, canvas.height);
-  ctx.arcTo(paddleX, canvas.height - paddleHeight, paddleX + paddleWidth / 2, canvas.height - paddleHeight, 10); // Adjust the radius as needed
+  ctx.arcTo(paddleX, canvas.height - paddleHeight,
+    // Adjust the radius as needed
+    paddleX + paddleWidth / 2, canvas.height - paddleHeight, 10);
   ctx.fill();
   ctx.closePath();
 }
-
 function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
       for (let r = 0; r < brickRowCount; r++) {
@@ -278,11 +246,9 @@ function drawBricks() {
           const brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
           const brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
           bricks[c][r].x = brickX;
-          bricks[c][r].y = brickY;  
-  
+          bricks[c][r].y = brickY;
           ctx.beginPath();
-          ctx.rect(brickX, brickY, brickWidth, brickHeight);  
-  
+          ctx.rect(brickX, brickY, brickWidth, brickHeight);
           // Determine the fill color based on the hit count
           if (bricks[c][r].hits === 1) {
             ctx.fillStyle = "cyan";
@@ -297,26 +263,22 @@ function drawBricks() {
         }
       }
     }
-  }
-
+}
 function drawScore() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "lightblue";
     ctx.fillText("Score: " + score, 8, 20);
 }
-
 function drawLives() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "lightblue";
     ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
 }
-
 function drawLevel() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "lightblue";
     ctx.fillText("Level: " + level, canvas.width / 2 - 30, 20);
 }
-
 function draw() {
     // Only run the game loop if not paused
     if (!paused) {
@@ -328,7 +290,6 @@ function draw() {
         drawLives();
         drawLevel();
         collisionDetection();
-
         // Ball movement logic
         if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
             dx = -dx;
@@ -351,18 +312,15 @@ function draw() {
                 }
             }
         }
-
         // Paddle movement logic
          if (rightPressed && paddleX < canvas.width - paddleWidth) {
             paddleX += 7;
         } else if (leftPressed && paddleX > 0) {
             paddleX -= 7;
         }
-
         // Update ball position
         x += dx;
         y += dy;
-
         // Continue the animation loop
         animationFrameId = requestAnimationFrame(draw);
     }

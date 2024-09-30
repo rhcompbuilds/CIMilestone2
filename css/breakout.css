@@ -1,6 +1,6 @@
 #warning {
     display: none;
-    color: red;
+    color: #FF0000;
 }
 #game {
     display: none;
@@ -8,15 +8,12 @@
 
 #leaderboard {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 28;
-    color: lightblue;
+    font-size: 28px;
+    color: #99ccff;
 }
 
 body {
-    text-align: center;
-    /*background: rgb(0,17,36);
-    background: radial-gradient(circle, 
-    rgba(0,17,36,0.9248291571753986) 26%, rgba(121,9,35,1) 49%, rgba(0,212,255,1) 74%);*/
+    text-align: center;    
     background-image: url('../media/background.jpg');
     }
 
@@ -37,22 +34,22 @@ body {
 }
 h1 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 34;
+    font-size: 34px;
     color: lightblue;
 }
 h2 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 28;
+    font-size: 28px;
     color: lightblue;
 }
 
 p {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 24;
+    font-size: 24px;
     color: lightblue; 
 }
 
-#dialog {
+#dialogMessage {
     font-family: Arial, sans-serif;
     color: black;
 }
