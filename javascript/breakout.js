@@ -9,9 +9,9 @@ let dx = 2;
 let dy = -2;
 
 // Paddle properties
-const paddleHeight = 10;
-const paddleWidth = 75;
-let paddleX = (canvas.width - paddleWidth) / 3;
+const paddleHeight = 5;
+const paddleWidth = 55;
+let paddleX = (canvas.width - paddleWidth) / 2;
 
 // Bricks properties
 let brickRowCount = 3; // Starting number of rows
