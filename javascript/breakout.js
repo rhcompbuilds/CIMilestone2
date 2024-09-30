@@ -2,7 +2,7 @@ const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 
 // Ball properties
-let ballRadius = 10;
+let ballRadius = 5;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 let dx = 2;
@@ -11,30 +11,30 @@ let dy = -2;
 // Paddle properties
 const paddleHeight = 10;
 const paddleWidth = 75;
-let paddleX = (canvas.width - paddleWidth) / 2;
+let paddleX = (canvas.width - paddleWidth) / 3;
 
 // Bricks properties
 let brickRowCount = 3; // Starting number of rows
 const brickColumnCount = 5;
-const brickWidth = 75;
-const brickHeight = 20;
-const brickPadding = 10;
-const brickOffsetTop = 30;
-const brickOffsetLeft = 30;
+const brickWidth = canvas.width * 0.15;
+const brickHeight = canvas.height * 0.05;
+const brickPadding = canvas.width * 0.02;
+const brickOffsetTop = canvas.height * 0.05;
+const brickOffsetLeft = canvas.width * 0.05;
 
 let bricks = [];
 function createBricks() {
     bricks = [];
-    for (let c = 0; c < brickColumnCount; c++) {
+    for (c = 0; c < brickColumnCount; c++) {
         bricks[c] = [];
-        for (let r = 0; r < brickRowCount; r++) {
+        for (r = 0; r < brickRowCount; r++) {
           bricks[c][r] = { x: 0, y: 0, status: 1 };
     
           // Determine hit count based on row index and randomize within the range
           if (r < brickRowCount / 3) {
-            bricks[c][r].hits = Math.floor(Math.random() * 2) + 2; // Randomize between 2 and 3
+            bricks[c][r].hits = Math.floor(Math.random() * 2) + 2;
           } else if (r < 2 * brickRowCount / 3) {
-            bricks[c][r].hits = Math.floor(Math.random() * 2) + 1; // Randomize between 1 and 2
+            bricks[c][r].hits = Math.floor(Math.random() * 2) + 1;
           } else {
             bricks[c][r].hits = 1; // Bottom row always has 1 hit
           }
@@ -143,8 +143,8 @@ createBricks();
 let rightPressed = false;
 let leftPressed = false;
 let score = 0;
-let lives = 5;
-let level = 3;
+let lives = 3;
+let level = 1;
 let maxLevel = 5;
 
 let paused = false; // Game paused state
