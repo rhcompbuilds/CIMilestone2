@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>            
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial - scale=1.0">
+        <title>Brick Breaker R Hall MP2</title>
+        <link rel="stylesheet" href="css/breakout.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>
+    <body>
+        <div id="dialog" title="Message" style="display:none;">
+                <p id="dialogMessage"></p>
+        </div>
+        <div id="mainText">
+            <h1><strong>Brick Breaker</strong></h1>
+            <div id="playerDetails">
+                <table>
+                    <tr>
+                        <th><label for="name" id="nameLabel">Your Name:</label></th>
+                        <th><input name="name" id="name" oninput="validate()" type="text"></th>
+                    </tr>
+                </table>
+                <button id="startButton" onclick="startGame()">Start Game</button>
+                <div id="warning" style="display:none; color:red;">Invalid input! Please use letters and numbers only.</div>
+            </div>
+            <div id="game">
+                <canvas id="board"></canvas>
+            </div>
+                
+                <h2>Instructions for playing</h2>
+                <p>Bounce the ball off the paddle to break the blocks. <br>
+                Each level will have more blocks and the ball will move faster.
+                <br> <br>
+                Use the left & right arrow keys to control the paddle <br>
+                Use the 'P' button to pause & resume the game
+                </p>
+       
+                <div id="leaderboardSection">
+                    <h2>Leaderboard</h2>
+                    <table id="leaderboard"></table>
+                </div>
+            <script src="javascript/breakout.js"></script>      
+        </div>
+    </body>                
+</html>

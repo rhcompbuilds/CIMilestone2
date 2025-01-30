@@ -1,0 +1,80 @@
+#warning {
+    display: none;
+    color: #FF0000;
+}
+#game {
+    display: none;
+}
+
+#leaderboard {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: #99ccff;
+}
+
+body {
+    text-align: center;    
+    background-image: url('../media/background.jpg');
+    }
+
+    .mainText {
+    background-color: rgba(255, 255,255, 0.7);
+    }
+    
+    #nameLabel {
+        color: lightblue;
+    }
+
+#board {
+    display: block;
+    margin: 0 auto;
+    background: black;
+    border: 1px solid #333;
+    width: 40%;    
+}
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    color: lightblue;
+}
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    color: lightblue;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: lightblue; 
+}
+
+#dialogMessage {
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+.ui-dialog-titlebar {
+    background: #3498db;
+    color: white;
+}
+
+.ui-dialog-buttonpane button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+table {
+    display: inline;
+}
+
+#leaderboardSection {
+    display: block; /* Display leaderboard initially */
+    margin: 20px 0;
+}
+
+#leaderboardSection.hidden {
+    display: none; /* Hide when the game starts */
+}
