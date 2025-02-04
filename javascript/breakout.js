@@ -208,8 +208,7 @@ if (brokenBricks > 0 && (brokenBricks + (brickRowCount * brickColumnCount - tota
             level++;
             brickRowCount++; // Increase the number of rows for the next level
             dx += 1; // Increase ball speed
-            dy = -dy; // Reverse the direction of the ball
-            // Optionally keep score or reset it
+            dy = -dy; // Reverse the direction of the ball           
             createBricks(); // Create new bricks for the new level
             x = canvas.width / 2; // Reset ball position
             y = canvas.height - 30; // Reset ball position
