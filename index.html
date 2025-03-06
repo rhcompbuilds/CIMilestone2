@@ -20,9 +20,10 @@
                     <tr>
                         <th><label for="name" id="nameLabel">Your Name:</label></th>
                         <th><input name="name" id="name" oninput="validate()" type="text"></th>
+                        <th><button id="startButton" onclick="startGame()">Start Game</button></th>
                     </tr>
                 </table>
-                <button id="startButton" onclick="startGame()">Start Game</button>
+                
                 <div id="warning" style="display:none; color:red;">Invalid input! Please use letters and numbers only.</div>
             </div>
             <div id="game">
