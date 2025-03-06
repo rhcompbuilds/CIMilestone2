@@ -19,11 +19,11 @@ body {
     }
 
     .mainText {
-    background-color: rgba(14, 13, 13, 0.7);
+    background-color: lightgray;
     }
     
     #nameLabel {
-        color: rgb(27, 28, 29);
+        color: lightgray;
     }
 
 #board {
