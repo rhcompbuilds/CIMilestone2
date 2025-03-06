@@ -14,7 +14,8 @@
 
 body {
     text-align: center;    
-    background-image: url('../media/background1.jpg');
+    background: radial-gradient(circle, 
+    rgba(0,17,36,0.9248291571753986) 26%, rgba(121,9,35,1) 49%, rgba(0,212,255,1) 74%);
     }
 
     .mainText {
