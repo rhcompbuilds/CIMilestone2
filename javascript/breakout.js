@@ -230,13 +230,19 @@ function showDialog(message, callback) {
     });
 }
 
-// --- Countdown Logic ---
+/**
+ * Countdown logic
+ * Function to start the timer
+ */
 function startCountdown() {
     countdown = 3; // Reset countdown for each game start
     gameStarted = false; // Ensure game is not yet started
     requestAnimationFrame(drawCountdown);
 }
 
+/**
+ * Function to show the timer
+ */
 function drawCountdown() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks(); // Still draw the bricks
