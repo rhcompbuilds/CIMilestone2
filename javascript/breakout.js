@@ -1,19 +1,25 @@
 const canvas = document.getElementById("board");
 const ctx = canvas.getContext("2d");
 
-// Ball properties
+/**
+ * Ball properties
+ */
 let ballRadius = 5;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 let dx = 2;
 let dy = -2;
 
-// Paddle properties
+/**
+ * Paddle properties
+ */
 const paddleHeight = 5;
 const paddleWidth = 55;
 let paddleX = (canvas.width - paddleWidth) / 2;
 
-// Bricks properties
+/**
+ * Bricks properties
+ */
 let brickRowCount = 3; // Starting number of rows
 const brickColumnCount = 5;
 const brickWidth = canvas.width * 0.15;
@@ -23,13 +29,19 @@ const brickOffsetTop = canvas.height * 0.05;
 const brickOffsetLeft = canvas.width * 0.05;
 
 let bricks = [];
+/**
+ * Function to create the preset bricks.
+ */
 function createBricks() {
     bricks = [];
     for (c = 0; c < brickColumnCount; c+= 1) {
         bricks[c] = [];
         for (r = 0; r < brickRowCount; r+= 1) {
           bricks[c][r] = { x: 0, y: 0, status: 1 };
-// Determine hit count based on row index and randomize within the range
+
+        /**
+         * Determine hit count based on row index and randomize within the range
+         */
           if (r < brickRowCount / 3) {
             bricks[c][r].hits = Math.floor(Math.random() * 2) + 2;
           } else if (r < 2 * brickRowCount / 3) {
@@ -41,7 +53,9 @@ function createBricks() {
       }
     }
 
-    // Function to display the leaderboard
+    /**
+     * Function to display the leaderboard
+    */
 function showLeaderboard() {
     const leaderboard = document.getElementById("leaderboard");
     const leaderboardData = getLeaderboardData();
@@ -51,7 +65,9 @@ function showLeaderboard() {
         li.textContent = `${index + 1}. ${entry.name} - ${entry.score}`;
         leaderboard.appendChild(li);
     });
-    // Show leaderboard only if there are scores
+    /**
+      * Adapt to show leaderboard only if there are scores
+    */
     if (leaderboardData.length > 0) {
         document.getElementById("leaderboardSection")
         .classList.remove("hidden");
@@ -60,15 +76,23 @@ function showLeaderboard() {
         .classList.add("hidden");
     }
 }
-    // Get leaderboard data from localStorage
+    /**
+      * Retrieve leaderboard data from localStorage
+    */
     function getLeaderboardData() {
         const leaderboard = localStorage.getItem("leaderboard");
         return leaderboard ? JSON.parse(leaderboard) : [];
     }
+    /**
+      * Name validator function
+      * @returns Error message if special characters are used
+      */
     function validate() {
         const name = document.getElementById("name").value;
         const warning = document.getElementById("warning");
-        // Regular expression to match only letters and numbers
+        /**
+         *Regular expression to match only letters and numbers
+         */
         const regex = /^[A-Za-z0-9]*$/;
         if (!regex.test(name)) {
         warning.style.display = "block";  // Show the warning
@@ -78,7 +102,9 @@ function showLeaderboard() {
         return true;
         }
     }
-        // Start the game when the player name is valid
+        /**
+         * Start the game when the player name is valid
+         */
             function startGame() {
                 const nameValid = validate();
                 const playerName = document.getElementById("name").value;
@@ -90,11 +116,15 @@ function showLeaderboard() {
             document.getElementById("game").style.display = "block";
                     // Initialize game and start drawing
                     createBricks();
-                    draw();
+                    // Call startCountdown instead of draw directly
+                    startCountdown();
                 } else {
                     showDialog("Please enter a valid name to start the game.");
                 }
             }
+            /**
+             * Updating the leaderboard
+             */
             function updateLeaderboard(playerName, playerScore) {
                 let leaderboardData = getLeaderboardData();
                 // Add the new player's score
@@ -107,7 +137,9 @@ function showLeaderboard() {
                 // Show the leaderboard
                 showLeaderboard();
             }
-           // Update the leaderboard on game over
+           /**
+            * Updating the leaderboard on game over
+            */
 function gameOver() {
     const playerName = document.getElementById("name").value;
     const playerScore = score;
@@ -119,6 +151,9 @@ function gameOver() {
     // Reload the game or reset game logic
     document.location.reload(); // Optionally reload the page to start over
 }
+/**
+ * Show the leaderboard when the page loads
+ */
 window.onload = function() {
     showLeaderboard(); // Show leaderboard on page load
 };
@@ -131,8 +166,12 @@ let level = 1;
 let maxLevel = 5;
 let paused = false; // Game paused state
 let animationFrameId; // To store the requestAnimationFrame id
+let countdown = 3; // Initial countdown value
+let gameStarted = false; // Flag to track if the game has truly started
+
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
 function keyDownHandler(e) {
     if (e.key === "Right" || e.key === "ArrowRight") {
         rightPressed = true;
@@ -142,6 +181,9 @@ function keyDownHandler(e) {
         togglePause(); // Toggle pause when 'P' is pressed
     }
 }
+/**
+ * Game controls key up handler
+ */
 function keyUpHandler(e) {
     if (e.key === "Right" || e.key === "ArrowRight") {
         rightPressed = false;
@@ -149,15 +191,23 @@ function keyUpHandler(e) {
         leftPressed = false;
     }
 }
+/**
+ * Pause toggle function
+ */
 function togglePause() {
     paused = !paused;
     if (!paused) {
-        draw(); // Resume the game
+        // Only resume if the countdown is finished and the game has started
+        if (gameStarted) {
+            draw(); // Resume the game
+        }
     } else {
         cancelAnimationFrame(animationFrameId); // Pause the game
     }
 }
-// Function to show the jQuery dialog and pause the game
+/**
+ * Function to show the pause dialog and pause the game
+*/
 function showDialog(message, callback) {
     // Set paused to true to stop the game loop
     paused = true;
@@ -168,16 +218,55 @@ function showDialog(message, callback) {
         buttons: {
             Ok: function() {
                 $(this).dialog("close");
-                // Resume the game after the dialog is closed
-                paused = false;
+                // Resume the game after the dialog is closed, but only if the countdown is done and the game has started
+                if (gameStarted) {
+                    paused = false;
+                    draw();
+                }
                 // Call the callback if provided
                 if (callback) {callback();}
-                // Resume the game loop
-                draw();
             }
         }
     });
 }
+
+// --- Countdown Logic ---
+function startCountdown() {
+    countdown = 3; // Reset countdown for each game start
+    gameStarted = false; // Ensure game is not yet started
+    requestAnimationFrame(drawCountdown);
+}
+
+function drawCountdown() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks(); // Still draw the bricks
+    drawBall();   // Still draw the ball at its starting position
+    drawPaddle(); // Still draw the paddle
+    drawScore();
+    drawLives();
+    drawLevel();
+
+    ctx.font = "bold 48px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(countdown, canvas.width / 2, canvas.height / 2);
+
+    if (countdown > 0) {
+        setTimeout(() => {
+            countdown--;
+            requestAnimationFrame(drawCountdown);
+        }, 1000); // Decrement every second
+    } else {
+        gameStarted = true; // Game can now officially start
+        paused = false; // Unpause the game
+        draw(); // Start the main game loop
+    }
+}
+
+/**
+ * Function to count and break bricks
+ */
 function collisionDetection() {
     let brokenBricks = 0; // Initialize broken bricks count
     let totalBricks = 0; // To keep track of total bricks
@@ -208,12 +297,12 @@ if (brokenBricks > 0 && (brokenBricks + (brickRowCount * brickColumnCount - tota
             level++;
             brickRowCount++; // Increase the number of rows for the next level
             dx += 1; // Increase ball speed
-            dy = -dy; // Reverse the direction of the ball           
+            dy = -dy; // Reverse the direction of the ball
             createBricks(); // Create new bricks for the new level
             x = canvas.width / 2; // Reset ball position
             y = canvas.height - 30; // Reset ball position
             paddleX = (canvas.width - paddleWidth) / 2; // Reset paddle position
-            showDialog("Level " + level);
+            showDialog("Level " + level, startCountdown); // Start countdown for the new level
         }
     }
 }
@@ -279,8 +368,8 @@ function drawLevel() {
     ctx.fillText("Level: " + level, canvas.width / 2 - 30, 20);
 }
 function draw() {
-    // Only run the game loop if not paused
-    if (!paused) {
+    // Only run the game loop if not paused and the game has officially started
+    if (!paused && gameStarted) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBricks();
         drawBall();
@@ -308,11 +397,14 @@ function draw() {
                     dx = 2 + (level - 1); // Increase difficulty based on level
                     dy = -2 - (level - 1);
                     paddleX = (canvas.width - paddleWidth) / 2;
+                    // Start countdown again after losing a life
+                    startCountdown();
+                    return; // Stop the current draw call to prevent immediate movement
                 }
             }
         }
         // Paddle movement logic
-         if (rightPressed && paddleX < canvas.width - paddleWidth) {
+          if (rightPressed && paddleX < canvas.width - paddleWidth) {
             paddleX += 7;
         } else if (leftPressed && paddleX > 0) {
             paddleX -= 7;
