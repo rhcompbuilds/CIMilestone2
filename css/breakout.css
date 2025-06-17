@@ -4,6 +4,9 @@
 }
 #game {
     display: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #leaderboard {
@@ -27,11 +30,15 @@ body {
     }
 
 #board {
-    display: block;
-    margin: 0 auto;
-    background: black;
-    border: 1px solid #333;
-    width: 50%;
+    display: block;    
+    border: 2px solid #333;
+    width: 48vw; /* Roughly half the viewport width */
+    /* Maintain aspect ratio by calculating height based on width */
+    height: calc(48vw / (480 / 320)); /* Adjust this ratio (canvas width / canvas height) */
+    background: #000;
+    display: block; /* Remove extra space below canvas */
+    margin: 20px auto;    
+    box-sizing: border-box; /* Ensures border is included in the size */
     }
 h1 {
     font-family: Arial, Helvetica, sans-serif;
