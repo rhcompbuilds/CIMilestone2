@@ -118,12 +118,12 @@ table {
 }
 
 #gameStats span {
-    flex-grow: 1; /* Allow spans to grow and take equal space */
-    text-align: center; /* Center the text within each span */
-    padding: 0 5px; /* Add some horizontal padding */
-}
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 5px;
+    }
 
-/* Optional: Media queries for responsiveness (adjust as needed) */
+
 @media (max-width: 768px) {
     #board {
         width: 90vw;
