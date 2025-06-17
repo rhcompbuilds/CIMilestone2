@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>            
+    <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial - scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rob Hall Milestone Project 2 Javascript Game</title>
         <link rel="stylesheet" href="css/breakout.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -23,13 +23,18 @@
                         <th><button id="startButton" onclick="startGame()">Start Game</button></th>
                     </tr>
                 </table>
-                
+
                 <div id="warning" style="display:none; color:red;">Invalid input! Please use letters and numbers only.</div>
             </div>
             <div id="game">
                 <canvas id="board"></canvas>
+                <div id="gameStats">
+                    <span id="scoreDisplay">Score: 0</span>
+                    <span id="livesDisplay">Lives: 3</span>
+                    <span id="levelDisplay">Level: 1</span>
+                </div>
             </div>
-                
+
                 <h2>Instructions for playing</h2>
                 <p>Bounce the ball off the paddle to break the blocks. <br>
                 Each level will have more blocks and the ball will move faster.
@@ -37,12 +42,12 @@
                 Use the left & right arrow keys to control the paddle <br>
                 Use the 'P' button to pause & resume the game
                 </p>
-       
+
                 <div id="leaderboardSection">
                     <h2>Leaderboard</h2>
                     <table id="leaderboard"></table>
                 </div>
-            <script src="javascript/breakout.js"></script>      
+            <script src="javascript/breakout.js"></script>
         </div>
-    </body>                
+    </body>
 </html>

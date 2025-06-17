@@ -248,10 +248,7 @@ function drawCountdown() {
     drawBricks(); // Still draw the bricks
     drawBall();   // Still draw the ball at its starting position
     drawPaddle(); // Still draw the paddle
-    drawScore();
-    drawLives();
-    drawLevel();
-
+    
     ctx.font = "bold 48px Arial";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
@@ -358,21 +355,7 @@ function drawBricks() {
       }
     }
 }
-function drawScore() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "lightblue";
-    ctx.fillText("Score: " + score, 8, 20);
-}
-function drawLives() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "lightblue";
-    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
-}
-function drawLevel() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "lightblue";
-    ctx.fillText("Level: " + level, canvas.width / 2 - 30, 20);
-}
+
 function draw() {
     // Only run the game loop if not paused and the game has officially started
     if (!paused && gameStarted) {
@@ -422,3 +405,20 @@ function draw() {
         animationFrameId = requestAnimationFrame(draw);
     }
 }
+/*  I have left these commented out as I have changed the layout.
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "lightblue";
+    ctx.fillText("Score: " + score, 8, 20);
+}
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "lightblue";
+    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+}
+function drawLevel() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "lightblue";
+    ctx.fillText("Level: " + level, canvas.width / 2 - 30, 20);
+}
+*/
