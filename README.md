@@ -5,4 +5,4 @@ When I first started this project, I wanted to build a first person, racing game
 Based on time constraints and having a purely Javascript based game, I decided to recreate the old Breakout game.
 ---
 
-![responsive website]("C:\Users\rhcom\Documents\App Development level 5\Project Milestone 2\media\ScreenShots and Wireframes\ResponsiveMockup.png"&auto=format&fit=crop&w=987&q=80)
+![responsive website]("https://github.com/rhcompbuilds/CIMilestone2/blob/main/media/ScreenShots%20and%20Wireframes/ResponsiveMockup.png"&auto=format&fit=crop&w=987&q=80)
