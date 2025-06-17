@@ -31,7 +31,8 @@ body {
     margin: 0 auto;
     background: black;
     border: 1px solid #333;
-    width: 40%;    
+    width: fit-content;
+    height: auto; 
 }
 h1 {
     font-family: Arial, Helvetica, sans-serif;
