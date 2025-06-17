@@ -31,7 +31,7 @@ body {
     margin: 0 auto;
     background: black;
     border: 1px solid #333;
-    width: fit-content;
+    width: 50%;
     height: auto; 
 }
 h1 {
