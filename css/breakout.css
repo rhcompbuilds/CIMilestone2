@@ -1,141 +1,194 @@
-#warning {
-    display: none;
-    color: #FF0000;
-}
-#game {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-}
-
-#leaderboard {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    color: lightgray;
-}
-
-body {
+ body {
     margin: 0;
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    min-height: 100vh; 
-    font-family: 'Inter', Arial, sans-serif;
+    overflow: hidden; /* Prevents scrollbars if content overflows */
+    display: flex; /* Enables flexbox for centering content */
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    min-height: 100vh; /* Ensures body takes full viewport height */
+    font-family: 'Inter', Arial, sans-serif; /* Using Inter font, fallback to Arial */
+    color: whitesmoke;
     background: radial-gradient(circle, 
     rgba(0,17,36,0.9248291571753986) 50%, rgba(121,9,35,1) 80%, rgba(0,212,255,1) 90%);
 }
 
-.mainText {
-    background-color: lightgray;
+#mainText {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally within mainText */
     width: 100%; /* Take full width */
     max-width: 900px; /* Optional: Limit overall width for readability */
     padding: 20px;
-    box-sizing: border-box;
-}
-    
-#nameLabel {
-    color: lightgray;
-}
-
-#board {
-    display: block;    
-    border: 2px solid #333;
-    width: 48vw; /* Roughly half the viewport width */
-    /* Maintain aspect ratio by calculating height based on width */
-    height: calc(48vw / (480 / 320)); /* Adjust this ratio (canvas width / canvas height) */
-    background: #000;
-    display: block; /* Remove extra space below canvas */
-    margin: 20px auto 0;    
-    box-sizing: border-box; /* Ensures border is included in the size */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 h1 {
     margin-top: 0;
     margin-bottom: 20px;
     text-align: center;
-    color: lightgray;
-    }
-
-h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 28px;
-    color: lightgray;
+    color: #4CAF50; /* Green title */
 }
 
-p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    color: lightgray; 
+#playerDetails {
+    margin-top: 20px;
+    text-align: center; /* Center content within these sections */
 }
 
-#dialogMessage {
-    font-family: Arial, sans-serif;
-    color: black;
+#playerDetails table {
+    margin: 0 auto;
 }
 
-.ui-dialog-titlebar {
-    background: #3498db;
-    color: white;
+#playerDetails th {
+    padding: 5px;
 }
 
-.ui-dialog-buttonpane button {
-    background: #3498db;
-    color: white;
+#playerDetails input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+#playerDetails button {
+    padding: 8px 15px;
+    border-radius: 5px;
     border: none;
-    padding: 5px 10px;
+    background-color: #007BFF; /* Blue button */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-table {
-    display: inline;
+#playerDetails button:hover {
+    background-color: #0056b3;
 }
 
-#leaderboardSection {
-    display: block; /* Display leaderboard initially */
-    margin: 20px 0;
+#game {
+    display: flex; /* Always flex for layout, visibility controlled by JS */
+    flex-direction: column; /* Stack canvas and stats vertically */
+    align-items: center; /* Center canvas and stats horizontally */
+    width: 100%;
 }
 
-#leaderboardSection.hidden {
-    display: none; /* Hide when the game starts */
+#board {
+    /* Set width based on viewport width, leaving some space */
+    width: 48vw;
+    /* Maintain aspect ratio by calculating height based on width */
+    height: calc(48vw / (480 / 320)); /* Ratio: canvas_width / canvas_height (480/320 = 1.5) */
+    background: #000;
+    display: block; /* Remove extra space below canvas */
+    margin: 20px auto 0; /* Adjust margin to add space above but none below for gameStats */
+    border: 2px solid lightblue;
+    border-radius: 10px; /* Rounded corners for the canvas */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Glowing effect */
+    box-sizing: border-box; /* Ensures border is included in the size */
 }
 
 #gameStats {
-    display: flex; /* Make gameStats a flex container */
+    display: flex; /* Make gameStats a flex container for horizontal layout */
     justify-content: space-around; /* Distribute items evenly with space around them */
-    width: 48vw; /* Match the width of the canvas */
+    align-items: center;
+    width: 48vw; /* Match the width of the canvas for alignment */
     margin-top: 10px; /* Space between canvas and stats */
-    padding: 5px;
-    background-color: #222; /* Slightly darker background for stats */
+    padding: 10px;
+    background-color: #2a2a2a; /* Slightly darker background for stats */
     border: 1px solid #555;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1.1em;
-    color: lightblue;
+    color: #E0E0E0; /* Lighter grey for text */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 #gameStats span {
-    flex-grow: 1;
+    flex-grow: 1; /* Allow spans to grow and take equal space */
+    text-align: center; /* Center the text within each span */
+    padding: 0 8px; /* Add some horizontal padding */
+    font-weight: bold;
+    color: lightblue; /* Specific color for the stats text */
+}
+
+h2, p {
     text-align: center;
-    padding: 0 5px;
-    }
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
 
+#warning {
+    color: red;
+    display: none;
+    margin-top: 10px;
+    font-weight: bold;
+}
 
+/* .hidden class for JS toggling */
+.hidden {
+    display: none !important;
+}
+
+/* JQuery UI Dialog Styling  */
+.ui-dialog {
+    background-color: #2a2a2a !important;
+    border: 1px solid #555 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    border: none !important;
+    border-top-left-radius: 7px !important;
+    border-top-right-radius: 7px !important;
+    padding: 10px !important;
+    font-size: 1.2em;
+}
+
+.ui-dialog .ui-dialog-content {
+    padding: 20px !important;
+    color: #E0E0E0 !important;
+    font-size: 1.1em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    background-color: #3a3a3a !important;
+    border-top: 1px solid #555 !important;
+    padding: 10px !important;
+}
+
+.ui-dialog .ui-button {
+    background-color: #007BFF !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 8px 15px !important;
+    margin: 5px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.ui-dialog .ui-button:hover {
+    background-color: #0056b3 !important;
+}
+
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
     #board {
-        width: 90vw;
+        width: 90vw; /* On smaller screens, make it wider */
         height: calc(90vw / (480 / 320));
+        margin: 10px auto 0; /* Adjust margin for smaller screens */
     }
     #gameStats {
         width: 90vw; /* Match canvas width on smaller screens */
         flex-direction: column; /* Stack stats vertically on small screens */
-        align-items: center;
         padding: 5px 0;
     }
     #gameStats span {
         margin-bottom: 5px; /* Add space between stacked stats */
+    }
+    #mainText {
+        padding: 10px;
     }
 }

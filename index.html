@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/breakout.css">
     </head>
     <body>
-        <!-- Dialog for messages (e.g., game start, level up, game over) -->
+       <!-- Dialog for messages (e.g., game start, level up, game over) -->
         <div id="dialog" title="Message" style="display:none;">
             <p id="dialogMessage"></p>
         </div>
@@ -32,18 +32,18 @@
                 <div id="warning" style="display:none; color:red;">Invalid input! Please use letters and numbers only.</div>
             </div>
 
-            <!-- Game section (hidden until start) -->
+            <!-- Game section - will contain canvas and game stats -->
             <div id="game">
                 <canvas id="board"></canvas>
                 <!-- Container for game statistics (score, lives, level) -->
-                <div id="gameStats">
+                <div id="gameStats" class="hidden"> <!-- Initially hidden -->
                     <span id="scoreDisplay">Score: 0</span>
                     <span id="livesDisplay">Lives: 3</span>
                     <span id="levelDisplay">Level: 1</span>
                 </div>
             </div>
 
-            <!-- Game instructions -->
+            <!-- Game instructions - these will remain visible below the game/leaderboard -->
             <h2>Instructions for playing</h2>
             <p>Bounce the ball off the paddle to break the blocks. <br>
             Each level will have more blocks and the ball will move faster.
