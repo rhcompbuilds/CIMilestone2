@@ -16,4 +16,33 @@ Breakout, the original game was released in 1976, quickly becoming a cult classi
 ## Table of Contents
 ---
 
-- User Experience (UX)
+- Site Structure and Design
+
+---
+## Site Structure and Design
+---
+![wireframe of site](media/Wireframe.png "Wireframe image of the layout of the site, on 3 screen sizes")
+
+Above is a basic wireframe design of how I wanted the website to look.  
+I have organised the files into specific folders; 'css', 'javascript' & 'media' relevent to each type of file. As stated earlier, the project consists of HTML, CSS and Javascript.  Each written in their own files.  I have not used Phaser or anything else to write this code, it is of my own writing.  I have used Gemini AI to check for errors in the code.  As screen shot is below.
+
+### HTML
+
+- index.html - This is the loading page and where the game, instructions and leaderboard are displayed.
+
+### CSS
+  #### css folder
+- breakout.css - This is where the styling for the game was originally, and I had a separate style sheet for the HTML.  It made no sense to keep them separate, so I combined them.
+
+### JavaScript
+  #### javascript folder
+- breakout.js - The functions and build of the game is in this file.  I kept it as a single file, to improve loading times.
+
+### Media
+  #### media folder
+- background.jpg - One of my background choices for the site.  I found this to be too busy for the game and caused a distraction.
+- background1.jpg - Another background that I found and decided would be too busy for the game.
+- CSS Validator.png
+- HTML Validator.png
+- ResponsiveMockup.png
+- Wireframe.png
