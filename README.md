@@ -40,9 +40,9 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
 
 ### Media
   #### media folder
-- background.jpg - One of my background choices for the site.  I found this to be too busy for the game and caused a distraction.
-- background1.jpg - Another background that I found and decided would be too busy for the game.
-- CSS Validator.png
-- HTML Validator.png
-- ResponsiveMockup.png
-- Wireframe.png
+- [media/background.jpg] - One of my background choices for the site.  I found this to be too busy for the game and caused a distraction.
+- [background1.jpg] - Another background that I found and decided would be too busy for the game.
+- [CSS Validator.png]
+- [HTML Validator.png]
+- [ResponsiveMockup.png]
+- [Wireframe.png]
