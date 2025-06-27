@@ -47,3 +47,12 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
 - ResponsiveMockup.png
 - Wireframe.png
 
+---
+## User Experience Design
+
+### User Experience
+- #### Target Audience
+  - Any age group, though a particular appeal to those who remember the basic game styles.
+  - Use to build hand-eye co-ordination
+  - A Gameror casual player.
+

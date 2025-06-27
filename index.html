@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Brick Breaker Game</title>
-        <!-- jQuery and jQuery UI for dialogs -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -16,7 +15,6 @@
             <p id="dialogMessage"></p>
         </div>
 
-        <!-- Main container for all game content -->
         <div id="mainText">
             <h1><strong>Brick Breaker</strong></h1>
 
@@ -36,7 +34,7 @@
             <div id="game">
                 <canvas id="board"></canvas>
                 <!-- Container for game statistics (score, lives, level) -->
-                <div id="gameStats" class="hidden"> <!-- Initially hidden -->
+                <div id="gameStats" class="hidden"> 
                     <span id="scoreDisplay">Score: 0</span>
                     <span id="livesDisplay">Lives: 3</span>
                     <span id="levelDisplay">Level: 1</span>
