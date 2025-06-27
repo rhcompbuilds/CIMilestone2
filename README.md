@@ -54,5 +54,38 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
 - #### Target Audience
   - Any age group, though a particular appeal to those who remember the basic game styles.
   - Use to build hand-eye co-ordination
-  - A Gameror casual player.
+  - A Gamer or casual player.
 
+- #### Expectations
+  - A clear & concise game that is quick to load and easy to play.
+  - A level system that increases in difficulty each level passed.
+  - A webpage and game that functions as expected.  All buttons behave as they should and controls act as required.
+  - A scoring system that allows a quick and easy way to view and track scores.
+
+- #### Visitor Goals
+  - ##### First Time Visitor
+    - "What is this game?"
+    - "How do I control this?"
+  
+  - ##### Returning Visitor
+    - "Are my scores still here?"
+    - "Can I beat my scores from last time?"
+  
+  - ##### Frequent Visitor
+    - "Can I play this on any device?"
+
+- #### Criteria To Meet
+  - Is the game self explanatory, is it easy to identify as a game?
+  - Are the methods of controlling the game clear and easy to read?
+  - Is the Scoreboard accessible and easy to read?
+  - Are the scores saved and will they update?
+  - Is the game and web page responsive in design?
+  - Does the background cause a distraction and allow all text to be easily viewed?
+
+- #### Methods to Acheive the Criteria
+  - There is a title and easily recognisable game title both on the webpage and the tab on the browser.
+  - The instuctions are constantly visible and in a large clear font and colour.
+  - The score board needs to load on page load and then again at game over.
+  - The score board need to update with new high scores as well as store and recall on each load.
+  - Use Bootstrap or CSS design to create a responsive design.
+  - Check the backgrounds and have people test the game, asking specifically if the background is distracting.
