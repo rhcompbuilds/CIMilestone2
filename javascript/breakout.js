@@ -55,7 +55,7 @@ let playAgainButton = {
     x: 0,
     y: 0,
     width: 0,
-    height: -10
+    height: 0
 };
 
 /**
@@ -140,8 +140,8 @@ function showLeaderboard() {
      */
     const buttonWidth = 150;
     const buttonHeight = 50;
-    playAgainButton.x = canvas.width / 2 - buttonWidth / 2;
-    playAgainButton.y = canvas.height - 80;
+    playAgainButton.x = canvas.width / 2 - buttonWidth / 3;
+    playAgainButton.y = canvas.height - buttonHeight - 30;
     playAgainButton.width = buttonWidth;
     playAgainButton.height = buttonHeight;
 
