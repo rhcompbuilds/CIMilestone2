@@ -54,8 +54,8 @@ let gameState = 'leaderboard'; // Initial state is showing leaderboard
 let playAgainButton = {
     x: 0,
     y: 0,
-    width: 0,
-    height: 0
+    width: canvas.width / 3,
+    height: canvas.height /5
 };
 
 /**
@@ -140,7 +140,7 @@ function showLeaderboard() {
      */
     const buttonWidth = 150;
     const buttonHeight = 50;
-    playAgainButton.x = canvas.width / 2 - buttonWidth / 3;
+    playAgainButton.x = canvas.width / 2 - buttonWidth / 2;
     playAgainButton.y = canvas.height - buttonHeight - 30;
     playAgainButton.width = buttonWidth;
     playAgainButton.height = buttonHeight;
