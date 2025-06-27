@@ -89,3 +89,7 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
   - The score board need to update with new high scores as well as store and recall on each load.
   - Use Bootstrap or CSS design to create a responsive design.
   - Check the backgrounds and have people test the game, asking specifically if the background is distracting.
+
+---
+## Design
+### Colours

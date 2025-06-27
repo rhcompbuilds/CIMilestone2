@@ -7,8 +7,8 @@ const ctx = canvas.getContext("2d");
 let ballRadius = 5;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
-let dx = 2; // Initial horizontal speed
-let dy = -2; // Initial vertical speed
+let dx = 1; // Initial horizontal speed
+let dy = -1; // Initial vertical speed
 
 /**
  * Paddle properties
@@ -38,7 +38,7 @@ let leftPressed = false;
 let score = 0;
 let lives = 3;
 let level = 1;
-let maxLevel = 5;
+let maxLevel = 10;
 let paused = false; // Game paused state
 let animationFrameId; // To store the requestAnimationFrame id
 let countdown = 3; // Initial countdown value
@@ -92,7 +92,6 @@ function getLeaderboardData() {
 
 /**
  * Function to draw the leaderboard directly onto the canvas.
- * This replaces the HTML leaderboard section.
  */
 function showLeaderboard() {
     cancelAnimationFrame(animationFrameId); // Stop any ongoing game/countdown animation
@@ -188,8 +187,8 @@ function resetGame() {
     score = 0;
     lives = 3;
     level = 1;
-    dx = 2; // Reset initial ball speed
-    dy = -2;
+    dx = 1; // Reset initial ball speed
+    dy = -1;
     x = canvas.width / 2;
     y = canvas.height - 30;
     paddleX = (canvas.width - paddleWidth) / 2;
@@ -216,7 +215,7 @@ function startGame() {
         showDialog("Welcome, " + playerName + "! Let's start the game.");
         // Hide name input
         document.getElementById("playerDetails").style.display = "none";
-        // Show the game container (now flex for centering canvas and stats)
+        // Show the game container
         document.getElementById("game").style.display = "flex";
 
         resetGame(); // Call resetGame to initialize and start countdown
@@ -237,7 +236,7 @@ function updateLeaderboard(playerName, playerScore) {
 }
 
 /**
- * Handles game over state: updates leaderboard, displays it on canvas.
+ * Handles game over state: updates leaderboard & displays it on canvas.
  */
 function gameOver() {
     cancelAnimationFrame(animationFrameId); // Stop game loop immediately
@@ -254,7 +253,7 @@ function gameOver() {
      * Show a dialog, then transition to leaderboard
      */
     showDialog("Game Over! Your score: " + playerScore, function() {
-        showLeaderboard(); // Show the updated leaderboard on the canvas
+        showLeaderboard();
     });
 }
 
@@ -272,7 +271,7 @@ window.onload = function() {
     // Attach event listeners for game controls
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
-    canvas.addEventListener("click", handleCanvasClick, false); // New: for "Play Again" button
+    canvas.addEventListener("click", handleCanvasClick, false); // For "Play Again" button
 };
 
 
@@ -320,10 +319,10 @@ function togglePause() {
 /**
  * Function to show a message dialog using jQuery UI.
  * @param {string} message - The message to display.
- * @param {Function} [callback] - An optional callback function to execute when the dialog is closed.
+ * @param {Function} [callback] - A callback function to execute when the dialog is closed.
  */
 function showDialog(message, callback) {
-    // Pause game visuals (but not necessarily logic, depending on context)
+    // Pause game visuals
     // If dialog is shown during game, game is logically paused
     if (gameState === 'playing' || gameState === 'countdown') {
         paused = true;
@@ -341,7 +340,7 @@ function showDialog(message, callback) {
                      paused = false; // Unpause only if game is supposed to resume
                      if (gameState === 'countdown') {
                         requestAnimationFrame(drawCountdown); // Ensure countdown resumes
-                     } else { // gameState === 'playing'
+                     } else {
                         draw(); // Ensure game loop resumes
                      }
                 }
@@ -349,8 +348,8 @@ function showDialog(message, callback) {
                 if (callback) { callback(); }
             }
         },
-        // Prevent dialog from closing on escape key or outside click
-        closeOnEscape: false,
+        // Allow dialog to close on escape key
+        closeOnEscape: true,
         open: function(event, ui) {
             $(".ui-dialog-titlebar-close", ui.dialog || ui).hide(); // Hide the close button
         }
@@ -375,13 +374,13 @@ function drawCountdown() {
     if (gameState !== 'countdown') return; // Only draw if in countdown state
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
-    drawBricks(); // Still draw the bricks
-    drawBall();   // Still draw the ball at its starting position
-    drawPaddle(); // Still draw the paddle
+    drawBricks();
+    drawBall();
+    drawPaddle();
     updateGameStatsDisplay(); // Update HTML stats display during countdown
 
     // Draw countdown text on canvas
-    ctx.font = "bold 48px 'Inter', Arial"; // Use Inter font for countdown
+    ctx.font = "bold 48px 'Inter', Arial";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -398,8 +397,8 @@ function drawCountdown() {
     } else {
         // Countdown finished
         gameState = 'playing'; // Transition to playing state
-        paused = false; // Unpause the game logic
-        draw(); // Start the main game loop
+        paused = false;
+        draw();
     }
 }
 
@@ -431,8 +430,7 @@ function collisionDetection() {
 
     // Check if all active bricks in the current level are broken
     if (totalBricks > 0 && brokenBricks === totalBricks) { // Make sure totalBricks is not 0 for empty levels
-        if (level === maxLevel) {
-            // Player wins the game
+        if (level === maxLevel) {            
             gameOver(); // Call gameOver to update leaderboard and display it
         } else {
             // Advance to the next level
