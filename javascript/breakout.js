@@ -138,8 +138,8 @@ function showLeaderboard() {
     /**
      * Draw "Play Again" button
      */
-    const buttonWidth = 150;
-    const buttonHeight = 50;
+    const buttonWidth = 110;
+    const buttonHeight = 30;
     playAgainButton.x = canvas.width / 2 - buttonWidth / 2;
     playAgainButton.y = canvas.height - buttonHeight - 30;
     playAgainButton.width = buttonWidth;
@@ -149,8 +149,10 @@ function showLeaderboard() {
     ctx.roundRect(playAgainButton.x, playAgainButton.y, playAgainButton.width, playAgainButton.height, 10);
     ctx.fill();
 
-    ctx.font = "bold 20px 'Inter', Arial";
+    ctx.font = "bold 14px 'Inter', Arial";
     ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
     ctx.fillText("Play Again", canvas.width / 2, playAgainButton.y + buttonHeight / 2);
 }
 
