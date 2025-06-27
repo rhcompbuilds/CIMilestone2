@@ -53,9 +53,9 @@ let gameState = 'leaderboard'; // Initial state is showing leaderboard
  */
 let playAgainButton = {
     x: 0,
-    y: -30,
-    width: 0,
-    height: 0
+    y: -80,
+    width: canvas.width / 3,
+    height: canvas.height /4
 };
 
 /**
