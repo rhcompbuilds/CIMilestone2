@@ -176,17 +176,17 @@ h2, p {
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     #board {
-        width: 90vw; /* On smaller screens, make it wider */
+        width: 90vw; 
         height: calc(90vw / (480 / 320));
-        margin: 10px auto 0; /* Adjust margin for smaller screens */
+        margin: 10px auto 0;
     }
     #gameStats {
-        width: 90vw; /* Match canvas width on smaller screens */
-        flex-direction: column; /* Stack stats vertically on small screens */
+        width: 90vw;
+        flex-direction: column;
         padding: 5px 0;
     }
     #gameStats span {
-        margin-bottom: 5px; /* Add space between stacked stats */
+        margin-bottom: 5px;
     }
     #mainText {
         padding: 10px;

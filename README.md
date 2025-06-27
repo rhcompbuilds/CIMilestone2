@@ -93,3 +93,9 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
 ---
 ## Design
 ### Colours
+  - #### Blocks
+    - #FFC107 Orange (1 hit left)
+    - #00BCD4 Cyan (2 hits left)
+    - #E91E63 Pink/Red (3 or more hits left)
+  - #### Paddle & Ball
+    -
