@@ -148,7 +148,7 @@ Light House Mobile Results
 ### Languages
 HTML, CSS & Javascript for the design and creation of the site and game.
 
-### Libraries & Applications Used
-[Wireframe Creation tool: Figma]: https://www.figma.com
-
-
+![Figma - Wireframes and Mind board](https://www.figma.com)
+![Git, Github & Git Codespaces - Storage, editing and tracking the project](https://github.com/rhcompbuilds/CIMilestone2)
+![Visual Studio Code - For my initial creation and coding while I was away from my desk](https://code.visualstudio.com)
+![Google Developer Tools - Checking and troubleshooting all aspects of the site and game]()
