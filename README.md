@@ -152,7 +152,7 @@ HTML, CSS & Javascript for the design and creation of the site and game.
 ![Git, Github & Git Codespaces - Storage, editing and tracking the project](https://github.com/rhcompbuilds/CIMilestone2)
 ![Visual Studio Code - For my initial creation and coding while I was away from my desk](https://code.visualstudio.com)
 ![Google Developer Tools - Checking and troubleshooting all aspects of the site and game](/media/DevTools.png)
-
+---
 ## Deployment
 ### To Deploy:
 ![The page is deployed using GitHub Pages](https://rhcompbuilds.github.io/CIMilestone2/ "Path to current deployed page")
@@ -172,3 +172,23 @@ HTML, CSS & Javascript for the design and creation of the site and game.
   3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
   4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
   5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+---
+## Known Issues
+ So far, the only issue I have found is that the 'Play Again' Button covers the leaderboard.
+   To correct this, I will move the button into the stats area of the game, so it is completely removed from the canvas.
+
+---
+## Credits
+
+#### The Original Breakout and Pong games 
+  - I have played these and emulated versions of these for years.  I have enjoyed creating a similar game with this design.
+
+#### Spencer Barriball
+  - Spencer has provided me with great feedback and supported me with advice on layout and the Markdown language, by providing a reference guide.
+  - Thank you for your help and support.
+
+#### Tom Cowen
+  - Amazing support and understanding throughout these last few weeks.  Thank you for your help and support.
+
+#### My Peer Group
+  - Thank you for taking the time to test and evaluate my game verbally.  It was a big help.
