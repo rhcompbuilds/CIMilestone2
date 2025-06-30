@@ -151,4 +151,24 @@ HTML, CSS & Javascript for the design and creation of the site and game.
 ![Figma - Wireframes and Mind board](https://www.figma.com)
 ![Git, Github & Git Codespaces - Storage, editing and tracking the project](https://github.com/rhcompbuilds/CIMilestone2)
 ![Visual Studio Code - For my initial creation and coding while I was away from my desk](https://code.visualstudio.com)
-![Google Developer Tools - Checking and troubleshooting all aspects of the site and game]()
+![Google Developer Tools - Checking and troubleshooting all aspects of the site and game](/media/DevTools.png)
+
+## Deployment
+### To Deploy:
+![The page is deployed using GitHub Pages](https://rhcompbuilds.github.io/CIMilestone2/ "Path to current deployed page")
+
+### Local Development
+
+- #### Fork the repository:
+
+  1. Log in (or sign up) to Github.
+  2. Go to the repository for this project, rhcompbuilds/CIMilestone2/
+  3. Click the Fork button in the top right corner.
+
+- #### Clone the repository:
+
+  1. Log in (or sign up) to GitHub.
+  2. Go to the repository for this project, rhcompbuilds/CIMilestone2/  (These are private, so you will only be able to do this with my permission)
+  3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+  4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+  5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
