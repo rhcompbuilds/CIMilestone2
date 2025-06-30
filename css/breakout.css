@@ -77,12 +77,12 @@ h1 {
     /* Maintain aspect ratio by calculating height based on width */
     height: calc(48vw / (480 / 320)); /* Ratio: canvas_width / canvas_height (480/320 = 1.5) */
     background: #000;
-    display: block; /* Remove extra space below canvas */
-    margin: 20px auto 0; /* Adjust margin to add space above but none below for gameStats */
+    display: block; 
+    margin: 20px auto 0; 
     border: 2px solid lightblue;
-    border-radius: 10px; /* Rounded corners for the canvas */
+    border-radius: 10px; 
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Glowing effect */
-    box-sizing: border-box; /* Ensures border is included in the size */
+    box-sizing: border-box;/
 }
 
 #gameStats {

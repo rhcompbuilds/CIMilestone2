@@ -98,4 +98,9 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
     - #00BCD4 Cyan (2 hits left)
     - #E91E63 Pink/Red (3 or more hits left)
   - #### Paddle & Ball
-    -
+    - #808080 - The ball colour
+    - #D3D3D3 - The paddle colour
+    - #000000 - Background
+
+
+  

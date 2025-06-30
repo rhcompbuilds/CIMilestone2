@@ -477,7 +477,7 @@ function collisionDetection() {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = "gray";
+    ctx.fillStyle = "gray"; // hex code: #808080
     ctx.fill();
     ctx.closePath();
 }
@@ -487,7 +487,7 @@ function drawBall() {
  */
 function drawPaddle() {
     ctx.beginPath();
-    ctx.fillStyle = "lightgrey";
+    ctx.fillStyle = "lightgrey"; // hex code: #D3D3D3
     // Draw the main rectangle part
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
     ctx.fill();
