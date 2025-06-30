@@ -121,7 +121,7 @@ To test this site and game, I used the usual CSS, HTML and Lighthouse checks.
 I also asked several peers to test the game for me.  I have summurised the responses and added my solutions.
 
 ### Peer reviews
--  #### Issue - "I don't have any time to prepare before a level starts, or I lose a life.
+-  #### Issue - "I don't have any time to prepare before a level starts, or I lose a life."
   - #### I have added a 3 second countdown timer and a pause function to allow for breaks and time to prepare.
 - #### Issue - "The background is too distracting from the game"
   - #### I changed the background to the Radial Gradient design it is now.
@@ -145,4 +145,10 @@ Light House Mobile Results
 
 ---
 ## Technologies Used
-[Wireframe Creation tool: Figma]:https://www.figma.com
+### Languages
+HTML, CSS & Javascript for the design and creation of the site and game.
+
+### Libraries & Applications Used
+[Wireframe Creation tool: Figma]: https://www.figma.com
+
+
