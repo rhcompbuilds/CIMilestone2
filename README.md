@@ -121,5 +121,28 @@ To test this site and game, I used the usual CSS, HTML and Lighthouse checks.
 I also asked several peers to test the game for me.  I have summurised the responses and added my solutions.
 
 ### Peer reviews
-- Issue - "I don't have any time to prepare before a level starts, or I lose a life.
-  - 
+-  #### Issue - "I don't have any time to prepare before a level starts, or I lose a life.
+  - #### I have added a 3 second countdown timer and a pause function to allow for breaks and time to prepare.
+- #### Issue - "The background is too distracting from the game"
+  - #### I changed the background to the Radial Gradient design it is now.
+- #### Issue - "I can't see my lives, score or level properly when they are on the game area.""
+  - #### I have moved the game stats to below the canvas
+- #### Issue - "It would be nice to have a play again option"
+  - #### I have added a 'Play Again' button.  I do need to move it out of the game area, but this will be a future improvement.
+
+### Validation
+CSS Validation:
+![CSS Validation Results](/media/CSS%20Validator.png)
+
+HTML Validation:
+![HTML Validation Results](/media/HTML%20Validator.png)
+
+Light House Desktop Results:
+![Light House Desktop Results](/media/lighthousetestDesktop.png)
+
+Light House Mobile Results
+![Light House Mobile Results](/media/lighthousetestMobile.png)
+
+---
+## Technologies Used
+[Wireframe Creation tool: Figma]:https://www.figma.com
