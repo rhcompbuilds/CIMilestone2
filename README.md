@@ -102,5 +102,24 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
     - #D3D3D3 - The paddle colour
     - #000000 - Background
 
+### Fonts
+ I have used 'Google Inter' as my main font with Arial as a back up as they are both in the Sans Serif family.
+ Using the font across the entire site has helps to keep everything simplistic and aesthetically pleasing.
 
-  
+ ### Media
+ Using a picture for a backgorund made everything too distracting.  I have changed it to be a Radial Gradient background:
+ radial-gradient(circle, 
+    rgba(0,17,36,0.9248291571753986) 50%, rgba(121,9,35,1) 80%, rgba(0,212,255,1) 90%)  I used this colour scheme and positioning, to 
+    allow for the canvas and instructions to stay easily readable and the background to remain aesthetically pleasing.
+
+  Here are the other two backgrounds I tried:
+  ![Moon Scape Background](/media/background.jpg "A dark but detailed moonscape background.")
+  ![Matrix Style Background](/media/background1.jpg "A background in the style of the Matrix computers")
+---
+## Testing
+To test this site and game, I used the usual CSS, HTML and Lighthouse checks.
+I also asked several peers to test the game for me.  I have summurised the responses and added my solutions.
+
+### Peer reviews
+- Issue - "I don't have any time to prepare before a level starts, or I lose a life.
+  - 
