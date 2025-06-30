@@ -13,12 +13,6 @@ Breakout, the original game was released in 1976, quickly becoming a cult classi
 ---
 ![responsive website](media/ResponsiveMockup.png "Mock-up of the responsive website")
 ---
-## Table of Contents
----
-
-- Site Structure and Design
-
----
 ## Site Structure and Design
 ---
 ![wireframe of site](media/Wireframe.png "Wireframe image of the layout of the site, on 3 screen sizes")
@@ -49,7 +43,7 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
 
 ---
 ## User Experience Design
-
+---
 ### User Experience
 - #### Target Audience
   - Any age group, though a particular appeal to those who remember the basic game styles.
@@ -89,9 +83,9 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
   - The score board need to update with new high scores as well as store and recall on each load.
   - Use Bootstrap or CSS design to create a responsive design.
   - Check the backgrounds and have people test the game, asking specifically if the background is distracting.
-
 ---
 ## Design
+---
 ### Colours
   - #### Blocks
     - #FFC107 Orange (1 hit left)
@@ -117,6 +111,7 @@ I have organised the files into specific folders; 'css', 'javascript' & 'media' 
   ![Matrix Style Background](/media/background1.jpg "A background in the style of the Matrix computers")
 ---
 ## Testing
+---
 To test this site and game, I used the usual CSS, HTML and Lighthouse checks.
 I also asked several peers to test the game for me.  I have summurised the responses and added my solutions.
 
@@ -145,6 +140,7 @@ Light House Mobile Results
 
 ---
 ## Technologies Used
+---
 ### Languages
 HTML, CSS & Javascript for the design and creation of the site and game.
 
@@ -154,19 +150,17 @@ HTML, CSS & Javascript for the design and creation of the site and game.
 ![Google Developer Tools - Checking and troubleshooting all aspects of the site and game](/media/DevTools.png)
 ---
 ## Deployment
+---
 ### To Deploy:
 ![The page is deployed using GitHub Pages](https://rhcompbuilds.github.io/CIMilestone2/ "Path to current deployed page")
 
 ### Local Development
-
 - #### Fork the repository:
-
   1. Log in (or sign up) to Github.
   2. Go to the repository for this project, rhcompbuilds/CIMilestone2/
   3. Click the Fork button in the top right corner.
 
 - #### Clone the repository:
-
   1. Log in (or sign up) to GitHub.
   2. Go to the repository for this project, rhcompbuilds/CIMilestone2/  (These are private, so you will only be able to do this with my permission)
   3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
@@ -174,11 +168,13 @@ HTML, CSS & Javascript for the design and creation of the site and game.
   5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 ---
 ## Known Issues
+---
  So far, the only issue I have found is that the 'Play Again' Button covers the leaderboard.
    To correct this, I will move the button into the stats area of the game, so it is completely removed from the canvas.
 
 ---
 ## Credits
+---
 
 #### The Original Breakout and Pong games 
   - I have played these and emulated versions of these for years.  I have enjoyed creating a similar game with this design.
@@ -192,3 +188,4 @@ HTML, CSS & Javascript for the design and creation of the site and game.
 
 #### My Peer Group
   - Thank you for taking the time to test and evaluate my game verbally.  It was a big help.
+---
